@@ -3,4 +3,4 @@ Git: PoluPolu - haslo to jest token
 Jenkins: 
 U: polupolu P: Dupa123$
 
-
+docker compose up -d --force-recreate portainer

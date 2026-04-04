@@ -1,6 +1,8 @@
+name: ppp
+
 services:
   postgres:
-    image: postgres:17.0
+    image: postgres:18.3
     container_name: postgres
     restart: always
     shm_size: 256mb
@@ -8,14 +10,13 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
-      PGDATA: /var/lib/postgresql/data/ 
+      PGDATA: /var/lib/postgresql/18/data #/var/lib/postgresql/data/ 
     ports:
       - "5432:5432"
     volumes:
-      - /data/postgres/data:/var/lib/postgresql/data  # Data directory
-      - /data/postgres/config:/etc/postgresql  # Configuration directory
-      - /data/postgres/config/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
-      - /data/postgres/config/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+      - /data/postgres/data:/var/lib/postgresql/18/data  # Data directory
+      - /data/postgres/config/postgresql.conf:/var/lib/postgresql/18/data/postgresql.conf
+      - /data/postgres/config/pg_hba.conf:/var/lib/postgresql/18/data/pg_hba.conf
 
   jenkins:
     image: jenkins/jenkins:2.505-jdk21
